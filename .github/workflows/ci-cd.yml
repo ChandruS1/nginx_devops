@@ -18,3 +18,12 @@ jobs:
 
       - name: Run containers
         run: docker compose up -d
+
+      - name: Wait for services
+        run: sleep 5
+
+      - name: Test User API
+        run: curl -f http://localhost/user
+
+      - name: Test Order API
+        run: curl -f http://localhost/order
