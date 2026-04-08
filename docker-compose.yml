@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  user1:
+    build: ./user
+
+  user2:
+    build: ./user
+
+  order1:
+    build: ./order
+
+  order2:
+    build: ./order
+
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - user1
+      - user2
+      - order1
+      - order2
